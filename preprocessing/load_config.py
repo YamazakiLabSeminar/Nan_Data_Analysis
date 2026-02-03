@@ -16,10 +16,12 @@ def load_config(config_path: str) -> dict:
     #=============================================================================================
     if not os.path.isfile(config_path):
         raise FileNotFoundError(f"config.yaml not found: {config_path}")
-
-    with open(config_path, "r", encoding="utf-8") as f:
-        cfg = yaml.safe_load(f)                             # YAMLを Python のデータ構造に変換する.LOG_DIR: "E:/logs"->{"paths": {"LOG_DIR": "E:/logs"}}
-
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            cfg = yaml.safe_load(f)                             # YAMLを Python のデータ構造に変換する.LOG_DIR: "E:/logs"->{"paths": {"LOG_DIR": "E:/logs"}}
+    except yaml.YAMLError as e:
+        raise ValueError(f"Invalid YAML: {config_path}") from e
+    
     if cfg is None:                          # 空ファイルなどの対策（None → {}）
         cfg = {}
 
