@@ -3,3 +3,5 @@ paths:
   INTERIM_DIR: "E:/interim"
   LOG_DIR: "E:/logs"
   TABLES_DIR: "E:/tables"
+  EXTERNAL_DIR: "F:/external"
+  
