@@ -26,7 +26,4 @@ def load_config(config_path: str) -> dict:
     if not isinstance(cfg, dict):            # トップレベルが dict か確認
         raise ValueError("config.yaml top-level must be a mapping (dict)")
 
-if __name__ == "__main__":
-    cfg = load_config("config.yaml")
-    print(cfg)
-    # 例: cfg["paths"]["LOG_DIR"] を使う
+    return cfg
